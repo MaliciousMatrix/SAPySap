@@ -1,0 +1,17 @@
+﻿
+{% if user.is_authenticated %}
+  
+    {% load CheckUserGroupScript %}
+    {% if request.user|ManagerCheck %}
+       <li><a href="{% url 'schedule' %}"class="navbar-brand">Schedules</a></li>
+       <li><a href="{% url 'Workers' %}"class="navbar-brand">Workers</a></li>
+       <li><a href="{% url 'ViewTimeOffRequests'%}"class="navbar-brand">Time Off Requests</a></li>
+
+
+    {% elif request.user|EmployeeCheck %}
+        <li><a href="{% url 'schedule' %}"class="navbar-brand">Schedules</a></li>
+        <li><a href="{% url 'Coworker' %}"class="navbar-brand">Coworkers</a></li>
+        <li><a href="{% url 'ViewTimeOffRequests'%}"class="navbar-brand">Time Off</a></li>
+    {% endif %}
+    
+{% endif %}

@@ -1,0 +1,11 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+ <button type="button" onclick="location.href='{% url 'Select' %}'">Edit Employees</button>
+<button type="button" onclick="location.href='{% url 'SelectTasks' %}'">Edit Tasks</button>
+ <button type="button" onclick="location.href='{% url 'schedule' %}'">Generate Schedule</button>
+<br /><br />
+<button type="button" onclick="location.href='{% url 'schedule' %}'">Cancel</button>
+{% endblock %}

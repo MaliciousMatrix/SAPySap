@@ -1,0 +1,4 @@
+C:\Users\grace\OneDrive\Documents\PythonSap\SAP1\SAP1\obj\Debug\SAP1.pyproj.CoreCompileInputs.cache
+M:\Programs\SourceTree\SAP2019\SAP1\SAP1\obj\Debug\SAP1.pyproj.CoreCompileInputs.cache
+D:\SCSU\Fall 2018\SE490\Sap\SAP1\SAP1\obj\Debug\SAP1.pyproj.CoreCompileInputs.cache
+C:\Users\grace\Documents\sap\SAP1\SAP1\obj\Debug\SAP1.pyproj.CoreCompileInputs.cache

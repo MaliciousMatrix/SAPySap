@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Staff Assignment Program</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+    .grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    }
+
+    
+    .button {
+    background-color: #CBCBCB;
+    border: black;
+    color: black;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    }
+
+     .time-off-grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+     .time-off-grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    }
+
+      .request-grid-container {
+        display: grid;
+        grid-template-columns: 75% auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+     .request-grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    float: right;
+    }
+
+     .next-grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+     .next-grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    float: left;
+    }
+
+     .template-grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+     .template-grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    float: left;
+    }
+
+        .container {
+            text-align: center;
+            width: auto;
+            border-color:black;
+        }
+
+        
+        .clear {
+            clear: both;
+        }
+
+    .new-template-grid-container{
+           display: grid;
+        grid-template-columns: auto auto auto auto auto auto;
+        grid-gap: 10px;
+        background-color: #808080;
+        padding: 10px;
+    }
+     .new-template-grid-container > div {
+    background-color: #CBCBCB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    float: left;
+    }
+
+     .inline-block {
+  display: inline-block;
+}
+     table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+     table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: " \25B4\25BE" 
+}
+     .inline-block
+    {
+        display:inline-block;
+        
+    }
+</style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Staff Assignment Program</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'about' %}" class="navbar-brand">About</a></li>
+                    <li><a href="{% url 'Notifications' %}" class="navbar-brand">Notifications</a></li>
+                    {% include 'layouts/GMNavBar.html' %}
+                </ul>
+                {% include 'layouts/loginpartial.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+{% block content %}{% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; {{ year }} - Staff Assignment Program</p>
+        </footer>
+    </div>
+
+
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

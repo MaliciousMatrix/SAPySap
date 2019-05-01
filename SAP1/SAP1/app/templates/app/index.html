@@ -1,0 +1,78 @@
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+ {% load CheckUserGroupScript %}
+    {% if request.user|ScheduleCheck %}
+        
+<h2><center>Current Schedule</center></h2>
+ <div class="grid-container">
+        <div>Employee Name</div>
+        <div>Employee ID</div>
+        <div>Pay Rate</div>  
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>  
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Hours Worked</div>
+        <div>Amount Earned</div>
+
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+    </div>
+<h2><center>Time Off Requests</center></h2>
+<div class="time-off-grid-container">
+    <div>Employee</div>
+    <div>Date(s)</div>
+    <div>Other Availabile Employees</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+</div>
+
+    {% elif request.user|EmployeeCheck or request.user|ManagerCheck %}
+<h2><center>Current Schedule</center></h2>
+
+     {% for s in Schedule_List.all %}
+        {{forloop.counter}},
+    {% endfor %}
+<section style="float:left; width:49%">
+    <h2>Next Week</h2>
+    <div class="next-grid-container">
+    <div>Date</div>
+    <div>Start Time</div>
+    <div>End Time</div>
+    <div>Task</div>
+    <div>Location</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+</div>
+</section>
+
+<section style="float:right; width:49%">
+    <h2>Time Off Requests</h2>
+      <div class="request-grid-container">
+        <div>Date(s)</div>
+        <div>Status</div>
+          <div>-</div>
+          <div>-</div>
+    </div>
+</section>
+
+<div class="clear"></div>
+
+
+    {% endif %}
+    
+{% endblock %}

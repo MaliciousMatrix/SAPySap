@@ -1,0 +1,17 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+{% csrf_token %}
+Generating schedule for:
+<br />
+{{staff.all|length}} staff:
+{%for s in staff %}
+{{s.get_name}},  
+{%endfor %}
+<br/>
+template: {{template.name}}
+
+{% endblock %}

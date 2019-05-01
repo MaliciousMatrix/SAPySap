@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SAP1", "SAP1\SAP1.pyproj", "{2067B33D-E4FF-4AC2-8456-67662DDFF53B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TestCommon", "TestCommon\TestCommon.pyproj", "{015B3BB5-7433-480A-8CB0-A9FBCC6BDB19}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ScheduleGeneration.Generation", "ScheduleGeneration.Generation\ScheduleGeneration.Generation.pyproj", "{1F319520-52BC-48D1-8E57-D0CA99722D99}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ScheduleGeneration.Core", "ScheduleGeneration.Core\ScheduleGeneration.Core.pyproj", "{1FACAE8B-4FC8-4764-B685-EC0DCA4E1F37}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Test.ScheduleGeneration.Core", "Test.ScheduleGeneration.Core\Test.ScheduleGeneration.Core.pyproj", "{942EE5DE-AE1D-4F91-B8B8-D1D0D398A762}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Test.ScheduleGeneration.Generation", "Test.ScheduleGeneration.Generation\Test.ScheduleGeneration.Generation.pyproj", "{19BA7F08-7AB7-4EE3-99A0-C389581BA848}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Assembler", "Assembler\Assembler.pyproj", "{88F4C3E9-39B9-48A3-A2DE-3BE87515AE9B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AssemblyTests", "AssemblyTests\AssemblyTests.pyproj", "{6ED4C385-F594-43A2-86F1-F9854B7FF2BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2067B33D-E4FF-4AC2-8456-67662DDFF53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2067B33D-E4FF-4AC2-8456-67662DDFF53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2067B33D-E4FF-4AC2-8456-67662DDFF53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2067B33D-E4FF-4AC2-8456-67662DDFF53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015B3BB5-7433-480A-8CB0-A9FBCC6BDB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015B3BB5-7433-480A-8CB0-A9FBCC6BDB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F319520-52BC-48D1-8E57-D0CA99722D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F319520-52BC-48D1-8E57-D0CA99722D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FACAE8B-4FC8-4764-B685-EC0DCA4E1F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FACAE8B-4FC8-4764-B685-EC0DCA4E1F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{942EE5DE-AE1D-4F91-B8B8-D1D0D398A762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{942EE5DE-AE1D-4F91-B8B8-D1D0D398A762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BA7F08-7AB7-4EE3-99A0-C389581BA848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BA7F08-7AB7-4EE3-99A0-C389581BA848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F4C3E9-39B9-48A3-A2DE-3BE87515AE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F4C3E9-39B9-48A3-A2DE-3BE87515AE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED4C385-F594-43A2-86F1-F9854B7FF2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED4C385-F594-43A2-86F1-F9854B7FF2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91801BB4-990E-437A-991C-A80F9109A128}
+	EndGlobalSection
+EndGlobal

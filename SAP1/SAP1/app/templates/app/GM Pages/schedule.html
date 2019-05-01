@@ -1,0 +1,145 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+ {% load CheckUserGroupScript %}
+    {% if request.user|ScheduleCheck %}
+<form action="/SelectEmployees">
+    <center><input type="submit" value="Generate a New Schedule" style="height:75px; width:340px" /></center>
+</form>
+
+<h2><center>Current Schedule</center></h2>
+ <div class="grid-container">
+        <div>Employee Name</div>
+        <div>Employee ID</div>
+        <div>Pay Rate</div>  
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>  
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Hours Worked</div>
+        <div>Amount Earned</div>
+
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+    </div>
+
+<h2>Upcoming Schedules</h2>
+   
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">April 1st-5th</a>
+        </h3>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">
+    <div class="grid-container">
+        <div>Employee Name</div>
+        <div>Employee ID</div>
+        <div>Pay Rate</div>  
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>  
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Hours Worked</div>
+        <div>Amount Earned</div>
+
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+        <div>-</div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{%elif request.user|EmployeeCheck or request.user|ManagerCheck%}
+<!--Employee Side-->
+<h2>Current Schedule</h2>
+<div class="next-grid-container">
+    <div>Date</div>
+    <div>Start Time</div>
+    <div>End Time</div>
+    <div>Task</div>
+    <div>Location</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+</div>
+
+<h2>Upcomming Schedule</h2>
+<div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">April 1st-5th</a>
+        </h3>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">
+   <div class="next-grid-container">
+    <div>Date</div>
+    <div>Start Time</div>
+    <div>End Time</div>
+    <div>Task</div>
+    <div>Location</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<h2>Previous Schedules</h2>
+<div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2">March 25th-29th</a>
+        </h3>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+   <div class="next-grid-container">
+    <div>Date</div>
+    <div>Start Time</div>
+    <div>End Time</div>
+    <div>Task</div>
+    <div>Location</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endif%}
+{% endblock %}

@@ -1,0 +1,17 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+<h2>Notifications</h2>
+
+{% for notification in notifications %}
+<div style="height:5px"></div>
+<section style="height:15%; width:100%; border-style:solid; border-width:thin;">
+    <div ><p>{{notification.time_sent}}</p></div>
+    <div class="inline-block" align="left" style="width:5%"><img src="images/TestImage.jpg" style="height:37px; width:39px;"/></div>
+    <div class="inline-block" align="center" style="width:80%"><h3>{{notification.title}}</h3></div>
+    <div class="inline-block" align="right" style="width:5%"><img src="images/TestImage.jpg" style="height:28px; width:28px;"/></div>
+    <div ><p>{{notification.message}}</p></div>
+</section>
+{% endfor %}
+
+{% endblock %}

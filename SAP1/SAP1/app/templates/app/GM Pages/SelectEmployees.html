@@ -1,0 +1,123 @@
+﻿
+{% extends "layouts/layout.html" %}
+
+
+{% block content %}
+<style>
+     table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<script>let count = 0;
+    let SelectAllBool = false;</script>
+<!--
+<script>
+    function SelectAll() {
+        var x = document.getElementsByName("staff");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            if (x[i].type == "checkbox") {
+                if (SelectAllBool == false) {
+                    x[i].checked = true;
+                }
+                else {
+                    x[i].checked = false;
+                }
+            }
+        }
+        SelectAllBool = !SelectAllBool;
+    }
+
+</script>
+    -->
+<form action="{% url 'SelectTemplate' %}" method="post">
+    {% csrf_token %}
+    <div class="inline-block" style="float:left">
+        <h2>Select Employees</h2>
+    </div>
+    <div class="inline-block" style="float:right">
+     <input type="submit" value="Continue With Selected Employees" style="float:right; height:75px; width:340px;" />
+    </div>
+    <div class="clear"></div>
+    {% for a in Availability_List.all|dictsort:'get_id'%}
+    <div style="display:none;" id="{{a.profile.id}} + {{a.get_day}}" name="{{a.get_day}}">
+        {{a.get_time}}
+    </div>
+    {%endfor%}
+      
+     <table class="sortable" id="EmployeeTable">
+         <thead>
+         <tr>
+             <th>
+                 Select
+             </th>
+             <th>Employee Name</th>
+             <th>Employee ID</th>
+             <th>Employee Group</th>
+             <th>Pay Rate</th>
+             
+             <th>Sunday Availability</th>
+             <th>Monday Availability</th>
+             <th>Tuesday Availability</th>
+             <th>Wednesday Availability</th>
+             <th>Thursday Availability</th>
+             <th>Friday Availability</th>
+             <th>Saturday Availability</th>
+             
+         </tr>
+             </thead>
+         <tbody>
+         {% for e in Employee_List.all|dictsort:'get_name' %}
+         <tr>
+             <td><input type="checkbox" id="staff_choice_{{forloop.counter}}" value="{{e.id}}" name="staff_choice"/></td>
+             <td>{{e.get_name}}</td>
+             <td>{{e.id}}</td>
+             <td>{{e.get_group}} </td>
+             <td>{{e.get_pay_grade}}</td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+         </tr>
+            
+             
+         
+         {% endfor %}
+             </tbody>
+     </table>
+
+    </form>
+
+<br />
+<br />
+<script>
+    function AddAvailabilities() {
+        table = document.getElementById("EmployeeTable");
+        for (var r = 1, row; row = table.rows[r]; r++) {
+            for (var c = 0; c < 7; c++) {
+                Ava = document.getElementById(r + " + " + c);
+                cell = row.cells[c + 5];
+                if (Ava == null) {
+                    cell.innerHTML = "Not Availabile";
+                }
+                else
+                    cell.innerHTML = Ava.innerHTML;
+            }
+        }
+    }
+
+    AddAvailabilities();
+</script>
+<!--
+ <button type="button" onclick="StoreEmployees()">Store Employees</button>
+-->
+
+
+{% endblock %}

@@ -1,0 +1,163 @@
+﻿<style>
+    #NewButton , #ContinueButton {
+    display:inline-block;
+    height:75px; 
+    width:340px;  
+}
+    
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+  
+</style>
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+<section style="height:auto; width:auto;">
+        <h2>Select Tasks to Add to Template</h2>
+
+<div class="inline-block">
+
+    <input type="button" id="NewButton" value="Add New Task" style="float:left;" onclick="window.open(href = 'AddTask','1556251367395','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;"/>
+
+    </div>
+
+<div class="inline-block">
+<form action="{% url 'OptimizationSettings' %}" method="post">
+    <input type="submit" id="ContinueButton" value="Save and Continue With Current Template" style="float:right;" />
+</form>
+    </div>
+</section>
+<section style="height:60%; width:30%; overflow-y:auto; float:left; text-align:left; border-style:solid; border-color:black; border-width:thin; padding:2px 2px 2px 2px;">
+    {% csrf_token %}
+    <script>let counter=0</script>
+    {% for t in Task_List.all %}
+<div class="w3-container" style="height:auto; width:auto; background-color: #CBCBCB; border-style:solid; border-color:black; border-width:medium;" id="Task_{{forloop.counter}}">
+
+    Task Name: {{t.get_name}}<br />
+    Employees Needed: {{t.get_employees}} <br />
+    Location: {{t.get_location}} <br />
+    Time: {{t.get_time}}<br />
+    Roles: {{t.get_roles}}<br />
+    {% if t.get_days == "Monday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}},2)"/>
+
+    {% elif t.get_days == "Tuesday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 3)"/>
+
+    {% elif t.get_days == "Wednesday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 4)"/>
+   
+    {% elif t.get_days == "Thursday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 5)"/>
+
+    {% elif t.get_days == "Friday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 6)"/>
+
+    {% elif t.get_days == "Sunday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 1)"/>
+
+    {% elif t.get_days == "Saturday"%}
+    Select: <input type="checkbox" id="check_{{forloop.counter}}" value="{{forloop.counter}}" onclick="Select({{forloop.counter}}, 7)"/>
+
+    {%endif%}
+</div> 
+    <div class="clear">
+    <br />
+    </div>
+    {% endfor %}
+</section>
+
+   {% for t in Task_List.all%}
+    <div style="display:none" id="{{forloop.counter}}" name="{{t.get_location}}">
+        Task Name: {{t.get_name}}<br />
+        Employees Needed: {{t.get_employees}} <br />
+        Time: {{t.get_time}}<br />
+        Roles: {{t.get_roles}}<br />
+        
+    </div>
+    <div style="display:none" id="{{forloop.counter}}_location">
+        {{t.get_location}}<br />
+    </div>
+   {%endfor%}
+
+<section style="height:60%; width:69%;overflow-y:auto; float:right;">
+<table id="Template" style="width:100%">
+    <tr>
+        <th>Location</th>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+    </tr>
+
+
+</table>
+    </section>
+<div class="clear"></div>
+<br />
+
+<script>
+    function Select(location, days) {
+        var x = document.getElementById("check_" + location);
+        if (x.type == "checkbox") {
+            TaskInfo = document.getElementById(location);
+            var Location = document.getElementById(location + "_location");
+            var table = document.getElementById("Template");
+            if (x.checked == true) {
+                
+                for (var i = 0, row; row = table.rows[i]; i++) {
+                    if (row.cells[days].innerHTML == "") {
+                        if (row.cells[0].innerHTML == Location.innerHTML) {
+                            row.cells[days].innerHTML = TaskInfo.innerHTML;
+                            return;
+                        }
+                    }
+
+                }
+
+                var Newrow = table.insertRow(-1);
+                for (var i = 0; i < 8; i++) {
+                    var NewCell = Newrow.insertCell(i);
+                    if (i == days) {
+                        NewCell.innerHTML = TaskInfo.innerHTML;
+                    }
+                    else if (i == 0) {
+                        NewCell.innerHTML = Location.innerHTML;
+                    }
+                    else
+                        NewCell.innerHTML = "";
+                }
+            }
+            else {
+                for (var i = 0, row; row = table.rows[i]; i++) {
+                    if (row.cells[days].innerHTML == TaskInfo.innerHTML) {
+                        row.cells[days].innerHTML = "";
+                        var RowEmpty = true;
+                        for (var c = 1, cell; cell = row.cells[c]; c++) {
+                            if (cell.innerHTML != "") {
+                                RowEmpty = false;
+                            }
+                        }
+                        if (RowEmpty == true) {
+                            table.deleteRow(i);
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
+
+      
+    
+</script>
+
+{% endblock %}

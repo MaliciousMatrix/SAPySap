@@ -1,0 +1,98 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+<script>
+    var SelectAllBool = false;
+
+    function SelectAll() {
+        var x = document.getElementsByName("staff");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            if (x[i].type == "checkbox") {
+                if (SelectAllBool == false) {
+                    x[i].checked = true;
+                }
+                else {
+                    x[i].checked = false;
+                }
+            }
+        }
+        SelectAllBool = !SelectAllBool;
+    }
+
+</script>
+ {% load CheckUserGroupScript %}
+    {% if request.user|ScheduleCheck %}
+<h2>Workers</h2>
+    {% csrf_token %}
+<section style="width:80%;">
+<div style="display:inline-block; float: left;">Sort by: <select>
+       <option>Name</option>
+       <option>Position</option>
+       <option>Phone Number</option></select></div>
+<div style="display:inline-block; float: left; width:20%"> <input type="button" value="Message Selected" /></div>
+<div style="display:inline-block; float: left; width:20%"> <input type="button" value="Edit Selected" onclick="window.open(href = 'EditEmployee','1556251367395','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;"/></div>
+<div style="display:inline-block; float: left; width:20%"> <input type="button" value="Add Employee" onclick="window.open(href = 'AddEmployees','1556251367395','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;"/></div>
+<div style="display:inline-block; float: right;"> Select All: <input type="checkbox" onclick="SelectAll()" /></div>
+    </section>
+<div class="clear"></div>
+<section style="width:100%">
+                 <div style="display:inline-block; width:20%;"> <h4>Name </h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Position</h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Full/Part</h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Pay Rate</h4></div>
+                   <div style="display:inline-block; width:15%;"><h4>Start Date</h4></div>
+                    <div style="display:inline-block; width:3%;"><h4>Select</h4></div>
+</section>
+<section style="height:80%; overflow-y:auto;">
+            {% for e in Employee_List.all|dictsort:'get_name' %}
+
+    <section style="border:solid; border-width: thin;">
+                  <div style="display:inline-block; width:20%;"> <h3>{{e.get_name}}</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>{{e.get_group}}</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>Full/Part Time</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>{{e.get_pay_grade}}</h3></div>
+                   <div style="display:inline-block; width:15%;"><h3>Start Date</h3></div>
+                   <div style="display:inline-block; width:3%;"><input type="checkbox" name="staff"/></div>
+        </section>
+<section style="padding:5px 5px 5px 5px"></section>
+            {% endfor %}
+{%elif request.user|EmployeeCheck or request.user|ManagerCheck %}
+<h2>Coworkers</h2>
+{% csrf_token %}
+<section style="width:80%;">
+<div style="display:inline-block; float: left;">Sort by: <select>
+       <option>Name</option>
+       <option>Position</option>
+       <option>Phone Number</option></select></div>
+<div style="display:inline-block; float: left; width:20%"> <input type="button" value="Message Selected" /></div>
+<div style="display:inline-block; float: right;"> Select All: <input type="checkbox" onclick="SelectAll()"/></div>
+    </section>
+<div class="clear"></div>
+<section style="width:100%">
+                 <div style="display:inline-block; width:20%;"> <h4>Name </h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Position</h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Phone Number</h4></div>
+                   <div style="display:inline-block; width:20%;"><h4>Email</h4></div>
+                   <div style="display:inline-block; width:15%;"><h4>Select</h4></div>
+</section>
+<section style="height:80%; overflow-y:auto;">
+            {% for e in Employee_List.all|dictsort:'get_name' %}
+
+    <section style="border:solid; border-width: thin;">
+                  <div style="display:inline-block; width:20%;"> <h3>{{e.get_name}}</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>{{e.get_group}}</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>{{e.get_phone}}</h3></div>
+                   <div style="display:inline-block; width:20%;"><h3>{{e.get_email}}</h3></div>
+                   <div style="display:inline-block; width:15%;"><input type="checkbox" name="staff" /></div>
+        </section>
+<section style="padding:5px 5px 5px 5px"></section>
+            {% endfor %}
+{%endif%}
+
+{% if user.is_authenticated %}
+   
+
+{%endif%}
+    </section>
+{% endblock %}

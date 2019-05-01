@@ -1,0 +1,50 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+Using Staff Assignment Program as a:<br />
+Employee: <input type="radio" name="Status" id="employee" onclick="RevealEmployee()"/>
+Employer: <input type="radio" name="Status" id="employer" onclick="RevealEmployer()"/>
+
+<div class="EmployeeReveal" id="EmpReveal" style="display:none">
+
+    <b>Name:</b> <input type="text" /> <br />
+    <b>Phone Number:</b> <input type="tel" /><br />
+    <b>Email: </b> <input type="email" /><br />
+    <b>Availability: </b><br />
+    <b>Monday:   </b> <input type="time" /> to <input type="time"/>   <input type="checkbox" /> Not Available <br />
+    <b>Tuesday:  </b> <input type="time" /> to <input type="time"/>   <input type="checkbox" /> Not Available <br />
+    <b>Wednesday:</b> <input type="time" /> to <input type="time"/>   <input type="checkbox" /> Not Available <br />
+    <b>Thursday: </b> <input type="time" /> to <input type="time"/>   <input type="checkbox" /> Not Available<br />
+    <b>Friday:   </b> <input type="time" /> to <input type="time"/>   <input type="checkbox" /> Not Available<br />
+</div>
+<div class="EmployerReveal" id="EmprReveal" style="display:none">
+    <b>Name:</b> <input type="text" /> <br />
+    <b>Phone Number:</b> <input type="tel" /><br />
+    <b>Email: </b> <input type="email" /><br />
+    <b>Company Name:</b> <input type="text" /><br />
+    </div>
+
+<script>
+    function RevealEmployee() {
+        if (document.getElementById('employee').checked) {
+            document.getElementById('EmpReveal').style.display = 'block';
+            document.getElementById('EmprReveal').style.display = 'none';
+        }
+        else {
+            document.getElementById('EmprReveal').style.display = 'none';
+        }
+    }
+
+    function RevealEmployer() {
+        if (document.getElementById('employer').checked) {
+            document.getElementById('EmprReveal').style.display = 'block';
+            document.getElementById('EmpReveal').style.display = 'none';
+        }
+        else {
+            document.getElementById('EmpReveal').style.display = 'none';
+        }
+    }
+</script>
+
+{% endblock%}

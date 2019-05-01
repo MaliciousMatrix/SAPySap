@@ -1,0 +1,41 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+{% csrf_token %}
+<h2>Optimization settings</h2>
+<br />
+<br />
+<script>
+    var overtime = settings.start_overtime_at;
+    var avoidOT = settings.avoid_overtime;
+    var SplitShifts = settings.allow_split_shifts;
+</script>
+<section style="float:left">
+    <div align="left">
+    <h3>Overtime:</h3>
+Overtime Starts At:<input type="number" id="OTStart" value="35" max="40" /> Hours
+<br />
+Overtime Wage:
+<input type="number" value="1.5"/> <br />
+Avoid overtime: <input type="checkbox" id="Avoid" checked="checked"/>
+<br />
+<h3>Target Employee Hours:</h3>
+    Full-Time: <input type="number" id="FTimeHour" value="40" /> <br />
+    Part-Time <input type="number" id="PTimeHour" value="12" /> <br />
+<h3>Preferences:</h3>
+Use Employee Preferences: <input type="checkbox" id="Preferences" checked="checked"/>
+<br />
+Allow Split Shifts: <input type="checkbox" id="SplitShift" checked="checked" /> 
+        </div>
+<form action="{% url 'GeneratingSchedule' %}" method="post">
+
+</form>
+</section>
+<section style="float:right">
+        {% csrf_token %}
+
+ <input type="submit" class="btn" value="Continue With Current Settings" name="mybtn" style="width:200px; height:85px;">
+</section>
+<div class="clear"></div>
+{% endblock %}

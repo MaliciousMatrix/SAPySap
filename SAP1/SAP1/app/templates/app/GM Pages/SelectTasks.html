@@ -1,0 +1,17 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+<form method="POST" action="/SelectTask">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% for t in Task_List.all %}
+       <input type="checkbox" id=count />{{t.TaskName}}<br />
+        <!--Render anything you want from the employees here by rererencing e.whateveritisyouwanttoknowaboutanemployee-->
+    {% endfor %}
+    <button type="submit">Confirm</button>
+</form>
+ <button type="button" onclick="location.href='{% url 'AddTask' %}'">Add New Tasks</button>
+ <button type="button" onclick="location.href='{% url 'Review' %}'">Confirm Tasks</button>
+{% endblock %}

@@ -1,0 +1,44 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+<h2>Employee Name</h2>
+<section style="height:auto; width:auto; float:left">
+<img src="/images/TestImage.jpg" style="height:250px; width:250px;">
+</section>
+<section style="height:auto; width:70%; float:right;">
+    {% load CheckUserGroupScript %}
+        {% if request.user|ScheduleCheck %}
+    <div align="left">
+   <b>Pay rate: </b><br />
+    {% endif %}
+    <b>Certifications:</b> <br />
+    <b>Phone Number:</b> <br />
+    <b>Email: </b><br />
+    <b>Availability: </b><br />
+    <div class="time-off-grid-container">
+        <div>Day</div>
+        <div>Start Time</div>
+        <div>End Time</div>
+        <div>Monday</div>
+        <div>-</div>
+        <div>-</div>
+        <div>Tuesday</div>
+        <div>-</div>
+        <div>-</div>
+        <div>Wednesday</div>
+        <div>-</div>
+        <div>-</div>
+        <div>Thursday</div>
+        <div>-</div>
+        <div>-</div>
+        <div>Friday</div>
+        <div>-</div>
+        <div>-</div>
+    </div>
+    </div>
+</section>
+<div class="clear"></div>
+{% endblock %}
+
+   

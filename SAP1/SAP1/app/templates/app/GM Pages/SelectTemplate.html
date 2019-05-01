@@ -1,0 +1,79 @@
+﻿<style>
+    #NewButton , #ContinueButton {
+    display:inline-block;
+    height:75px; 
+    width:340px;  
+}
+   
+
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+
+<div class="inline-block">
+    <form action="{% url 'EditTemplate' %}">
+        {% csrf_token %}
+<input type="submit" id="NewButton" value="Create New Template"/>
+        </form>
+    </div>
+<div class="inline-block">
+<form action="{% url 'OptimizationSettings' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" id="ContinueButton" value="Continue with Selected Template" />
+    
+    
+<div class="clear"></div>
+{% for t in Template_List.all %}
+
+<input class="inline-block" type="radio" id="template_choice{{forloop.counter}}" value="{{t.id}}" name="template_choice"/> <h3 class="inline-block">{{t.name}}</h3>
+<div class="clear"></div>
+  
+<table style="width:100%">
+    <thead>
+        
+        <tr>
+            <th>Task Name</th>
+            <th>Task Location</th>
+            <th>Day(s) of the Week</th>
+            <th>Needed Number of Employees</th>
+            <th>Task Time</th>
+            <th>Task Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in t.get_tasks %}
+        <tr>
+            <td>
+                {{task.task_name}}
+            </td>
+            <td>
+                {{task.location}}
+            </td>
+            <td>
+                {{task.DAY_CHOICES}}
+            </td>
+            <td>
+                {{task.required_number_of_employees}}
+            </td>
+            <td>
+                {{task.start_time}} - {{task.end_time}}
+            </td>
+            <td>
+                {{task.task_description}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+        
+</table>
+</form>
+    </div>
+{% endfor %}
+    
+
+{% endblock %}

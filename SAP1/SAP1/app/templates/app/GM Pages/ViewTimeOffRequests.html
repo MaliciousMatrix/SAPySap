@@ -1,0 +1,53 @@
+﻿{% extends "layouts/layout.html" %}
+
+{% block content %}
+ {% load CheckUserGroupScript %}
+    {% if request.user|ScheduleCheck %}
+<h2><center>Time Off Requests</center></h2>
+<section style="width:90%; float:left;">
+    Sort By: <select>
+    <option>Name</option>
+    <option>Dates</option>
+    <option>Other Employees</option>
+    </select>
+    <style>        p.indent {
+        padding-left:1.8em}
+    </style>
+    <input type="button" value="Review Selected"/>
+    <style>        p.indent {
+        padding-left:1.8em}
+    </style>
+    <input type="button" value="Deny Selected" />
+    <style>        p.indent {
+        padding-left:1.8em}
+    </style>
+    <input type="button" value="Accept Selected" />
+</section>
+<div class="clear"></div>
+<div class="template-grid-container">
+    <div>Employee</div>
+    <div>Date(s)</div>
+    <div>Other Availabile Employees</div>
+    <div>Select</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div><input type="checkbox"/></div>
+</div>
+{%elif request.user|EmployeeCheck or request.user|ManagerCheck %}
+   <center> <h2>Time Off Requests</h2> 
+<input type="button" value="Create New Time Off Request" style="height:75px;width:400px"/>
+    <br />
+    <br />
+      <div class="request-grid-container">
+        <div>Date(s)</div>
+        <div>Status</div>
+          <div>-</div>
+          <div>-</div>
+    </div>
+    </center>
+
+<div class="clear"></div>
+{%endif%}
+
+{% endblock %}
